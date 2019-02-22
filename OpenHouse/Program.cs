@@ -10,7 +10,7 @@ namespace OpenHouse
             {
                 string response = Console.ReadLine();
 
-                if (response  == "yes")
+                if (response == "yes")
                 {
                     return true;
                 }
@@ -28,20 +28,62 @@ namespace OpenHouse
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome to the Open House!");
-
-            string[] rooms = new string[]{ "living room", "kitchen" };
-            string[] descriptions = new string[] { "The living room has shag carpet.", "The kitchen has black and white tile floors." };
-            
-            for(int i = 0; i < rooms.Length; i++)
+            Console.WriteLine("Do you want to see the living room?");
+            if (GetResponse())
             {
-                Console.WriteLine($"Would you like to see the {rooms[i] }?");
-
-                if (GetResponse() == true)
+                ChangeTextColor("The living room has shag carpet.", ConsoleColor.DarkMagenta);
+               
+            }
+            Console.WriteLine("Do you want to see the dining room?");
+            if (GetResponse())
+            {
+                ChangeTextColor("The table is scratched.", ConsoleColor.Cyan);
+            }
+       
+            Console.WriteLine("How many steps do you think are in the staircase?");
+            int guessCount = 0;
+            while (guessCount < 3)
+            {
+                int stepStairs = int.Parse(Console.ReadLine());
+                guessCount++;
+                if (stepStairs < 10)
                 {
-                    Console.WriteLine(descriptions[i]);
+                    ChangeTextColor("You did not guess high enough. Guess Again.", ConsoleColor.DarkGreen);
+                }
+                else if (stepStairs > 10)
+                {
+                    ChangeTextColor("You guessed too high. Guess Again.", ConsoleColor.DarkRed);
+                }
+                else if (stepStairs == 10)
+                {
+                    Console.WriteLine("You guessed correctly!");
+                    break;
                 }
             }
+              
+            
+            Console.WriteLine("There are exactly ten steps.");
+        
+                    
+                
+
+                
+            
         }
+        private static void ChangeTextColor(string text, ConsoleColor color)
+        {
+            Console.ForegroundColor = color;
+            Console.Write(text);
+            Console.ForegroundColor = ConsoleColor.Gray;
+            Console.WriteLine();
+        }
+
+
+            
+    }
+}
+
+
 
 
 
