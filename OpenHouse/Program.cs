@@ -39,6 +39,16 @@ namespace OpenHouse
             {
                 ChangeTextColor("The table is scratched.", ConsoleColor.Cyan);
             }
+            Console.WriteLine("Would you like to see the new stove?");
+            if (GetResponse())
+            {
+                ChangeTextColor("It is electric and heats food.", ConsoleColor.DarkGray);
+            }
+            Console.WriteLine("Don't you want to see the bay window? ");
+            if (GetResponse())
+            {
+                ChangeTextColor("I want to make this a window seat.", ConsoleColor.Yellow);
+            }
        
             Console.WriteLine("How many steps do you think are in the staircase?");
             int guessCount = 0;
